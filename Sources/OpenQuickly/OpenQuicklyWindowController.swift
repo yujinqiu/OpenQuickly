@@ -9,42 +9,42 @@
 import Cocoa
 
 open class OpenQuicklyWindowController: NSWindowController {
-
-  let AUTOSAVE_NAME = "OpenQuicklyWindow"
-
-  var options: OpenQuicklyOptions!
-
-  private var windowIsVisible: Bool {
-    return window?.isVisible ?? false
-  }
-
-  public convenience init(options: OpenQuicklyOptions) {
-    let oqvc = OpenQuicklyViewController(options: options)
-    let window = OpenQuicklyWindow(contentViewController: oqvc)
-
-    self.init(window: window)
-
-    self.options = options
-
-    if options.persistPosition {
-      window.setFrameAutosaveName(AUTOSAVE_NAME)
+    
+    let AUTOSAVE_NAME = "OpenQuicklyWindow"
+    
+    var options: OpenQuicklyOptions!
+    
+    private var windowIsVisible: Bool {
+        return window?.isVisible ?? false
     }
-  }
-
-  override open func close() {
-    if windowIsVisible {
-      options.delegate?.windowDidClose()
-      super.close()
+    
+    public convenience init(options: OpenQuicklyOptions) {
+        let oqvc = OpenQuicklyViewController(options: options)
+        let window = OpenQuicklyWindow(contentViewController: oqvc)
+        
+        self.init(window: window)
+        
+        self.options = options
+        
+        if options.persistPosition {
+            window.setFrameAutosaveName(AUTOSAVE_NAME)
+        }
     }
-  }
-
-  public func toggle() {
-    if windowIsVisible {
-      close()
-    } else {
-      window?.makeKeyAndOrderFront(self)
-      showWindow(self)
+    
+    override open func close() {
+        if windowIsVisible {
+            options.delegate?.windowDidClose()
+            super.close()
+        }
     }
-  }
-
+    
+    public func toggle() {
+        if windowIsVisible {
+            close()
+        } else {
+            window?.makeKeyAndOrderFront(self)
+            showWindow(self)
+        }
+    }
+    
 }

@@ -9,13 +9,13 @@
 import Cocoa
 
 class OpenQuicklyTableRowView: NSTableRowView {
-
-  override var isEmphasized: Bool {
-    get {
-      return true
+    
+    override var isEmphasized: Bool {
+        get {
+            return true
+        }
+        
+        set {}
     }
-
-    set {}
-  }
-
+    
 }
