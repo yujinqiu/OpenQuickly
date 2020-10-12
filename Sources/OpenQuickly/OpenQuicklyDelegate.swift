@@ -15,7 +15,7 @@ public protocol OpenQuicklyDelegate {
   ///
   /// - Parameters:
   ///   - item: The selected item
-  func itemWasSelected(selected item: Any)
+  func onItemSelected(selected item: Any)
 
   /// Called when a value was typed in the search bar
   ///
@@ -23,7 +23,15 @@ public protocol OpenQuicklyDelegate {
   ///   - value: The value entered in to the search field
   ///
   /// - Returns: Any matches based off the value typed
-  func valueWasEntered(_ value: String) -> [Any]
+  func onValueChanged(_ value: String) -> [Any]
+    
+  /// Called when enter typed in the search bar
+  ///
+  /// - Parameters:
+  ///   - value: The value entered in to the search field
+  ///
+  /// - Returns: Any matches based off the value typed
+  func onValueEntered(_ value: String) -> [Any]
 
   /// Given an item return a view to be used for that item in the matches list
   ///

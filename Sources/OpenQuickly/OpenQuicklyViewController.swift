@@ -148,7 +148,7 @@ class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
 
     let value = searchField.stringValue
 
-    matches = options.delegate?.valueWasEntered(value)
+    matches = options.delegate?.onValueChanged(value)
 
     reloadMatches()
   }
@@ -157,7 +157,7 @@ class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
     let selected = matchesList.item(atRow: matchesList.selectedRow) as Any
 
     if let delegate = options.delegate {
-      delegate.itemWasSelected(selected: selected)
+      delegate.onItemSelected(selected: selected)
     }
 
     openQuicklyWindowController?.toggle()
